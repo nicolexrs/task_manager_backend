@@ -92,8 +92,8 @@ server.delete("/tasks/:id" , async (req, res) => {
     const deletedTask = await Task.findByIdAndDelete(req.params.id);
     if (!deletedTask) {
       res.status(404).json({error : "Task not found"});
-      res.json(deletedTask)
     }
+    res.status(200).json({ message: "Task deleted successfully" ,deletedTask})
   } catch (error) {
     res.status(500).json({error: error.message})
   }
